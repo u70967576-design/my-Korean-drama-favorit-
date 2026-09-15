@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My K-Drama Favorit</title>
+<style>
+:root{--bg:#0b0e14;--card:#151a24;--txt:#e6edf3;--txt2:#8b949e;--acc:#00b4d8;--glow:rgba(0,180,216,.4);--star:#ffca28;--bd:#21262d;--ok:#2ea043;--okbg:rgba(46,160,67,.15);--mo:rgba(0,0,0,.85)}
+body.lm{--bg:#f0f4f8;--card:#fff;--txt:#1a202c;--txt2:#4a5568;--acc:#0077b6;--glow:rgba(0,119,182,.2);--star:#f59e0b;--bd:#e2e8f0;--ok:#16a34a;--okbg:rgba(22,163,74,.1);--mo:rgba(0,0,0,.5)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;transition:background-color .3s,color .3s,border-color .3s}
+body{background:var(--bg);color:var(--txt);min-height:100vh;display:flex;justify-content:center}
+.container{width:100%;max-width:480px;padding:15px;display:flex;flex-direction:column;gap:15px}
+#intro{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;position:fixed;top:0;left:0;width:100%;background:linear-gradient(180deg,var(--bg),var(--card));z-index:999;transition:opacity .8s,transform .8s}
+#intro.fo{opacity:0;transform:scale(1.05)}
+.iicon{font-size:70px;margin-bottom:25px;animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.ititle{font-size:34px;font-weight:900;margin-bottom:10px;line-height:1.2}
+.ititle span{color:var(--acc);text-shadow:0 0 20px var(--glow)}
+.isub{font-size:13px;color:var(--txt2);margin-bottom:45px;letter-spacing:3px;font-weight:600}
+.bs{background:linear-gradient(135deg,var(--acc),#005f8a);border:none;color:#fff;padding:15px 60px;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px var(--glow)}
+#app{display:none;flex-direction:column;gap:15px;width:100%;opacity:0;transition:opacity .8s}
+#app.sa{opacity:1}
+.th{display:flex;justify-content:space-between;align-items:center;padding:5px 0}
+.lt{font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px}
+.lt span{color:var(--acc)}
+.tb{background:var(--card);border:1px solid var(--bd);color:var(--txt);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer}
+.tb:hover{border-color:var(--acc);color:var(--acc)}
+.mlc{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--acc);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.mlt{font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px}
+.mld{font-size:12px;color:var(--txt2);line-height:1.5}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sc{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;text-align:center}
+.sn{font-size:30px;font-weight:900;color:var(--acc);text-shadow:0 0 10px var(--glow)}
+.sl{font-size:12px;color:var(--txt2);margin-top:4px;font-weight:600}
+.sb{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 18px;color:var(--txt);width:100%;font-size:14px}
+.sb:focus{outline:none;border-color:var(--acc)}
+.sb::placeholder{color:var(--txt2)}
+.st{font-size:16px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.dl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:5px}
+.dc{background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(20px);animation:cf .5s ease forwards}
+@keyframes cf{to{opacity:1;transform:translateY(0)}}
+.dc:hover{transform:translateY(-5px);border-color:var(--acc)}
+.dp{width:100%;height:200px;object-fit:cover;background:#21262d}
+.ci{padding:10px;display:flex;flex-direction:column;gap:6px}
+.dt{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dy{font-size:11px;color:var(--txt2)}
+.gr{font-size:10px;color:var(--acc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rs{color:var(--star);font-size:11px}
+.rt{color:var(--txt2);font-size:10px;margin-left:3px}
+.stb{display:inline-block;background:var(--okbg);color:var(--ok);font-size:9px;padding:2px 6px;border-radius:4px;width:fit-content;font-weight:700}
+.bd2{background:transparent;border:1px solid var(--acc);color:var(--acc);padding:7px 0;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;width:100%;margin-top:4px}
+.bd2:hover{background:var(--acc);color:#fff}
+.fc{text-align:center;padding:20px 0 15px;margin-top:10px;border-top:1px solid var(--bd);display:flex;flex-direction:column;gap:12px;align-items:center}
+.ft{font-size:13px;color:var(--txt2)}
+.ft span{color:var(--acc);font-weight:700;text-shadow:0 0 8px var(--glow)}
+.sl2{display:flex;gap:15px}
+.si{width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--txt2)}
+.si:hover{transform:translateY(-3px) scale(1.1)}
+.si.ig:hover{color:#E1306C;border-color:#E1306C}
+.si.tt:hover{color:#00f2ea;border-color:#00f2ea}
+.si.wa:hover{color:#25D366;border-color:#25D366}
+.btt{position:fixed;bottom:25px;right:25px;width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,var(--acc),#005f8a);border:none;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(20px);transition:all .3s;box-shadow:0 4px 20px var(--glow);z-index:500}
+.btt.sh{opacity:1;visibility:visible;transform:translateY(0)}
+.mo{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--mo);z-index:1000;justify-content:center;align-items:center;padding:20px;opacity:0;transition:opacity .3s}
+.mo.sm{opacity:1}
+.mc{background:var(--card);border:1px solid var(--bd);border-radius:16px;width:100%;max-width:400px;max-height:90vh;overflow-y:auto;position:relative;animation:mi .4s ease}
+@keyframes mi{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.mx{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.6);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;z-index:10}
+.mp{width:100%;height:200px;object-fit:cover;background:#21262d;border-radius:16px 16px 0 0}
+.mb{padding:18px;display:flex;flex-direction:column;gap:12px}
+.mt2{font-size:22px;font-weight:800}
+.mm{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mg{background:var(--bg);padding:4px 12px;border-radius:20px;font-size:11px;color:var(--txt2);border:1px solid var(--bd);font-weight:600}
+.mrr{display:flex;align-items:center;gap:10px}
+.ms{color:var(--star);font-size:18px;letter-spacing:2px}
+.mrt{color:var(--txt2);font-size:14px;font-weight:600}
+.msy{font-size:13px;color:var(--txt2);line-height:1.7}
+.mn{background:var(--bg);border-left:4px solid var(--acc);padding:12px 15px;border-radius:8px;font-size:12px;line-height:1.5}
+.mn strong{color:var(--acc)}
+.hd{display:none!important}
+</style>
+</head>
+<body>
+
+<div id="intro">
+<div class="iicon">🎬</div>
+<h1 class="ititle">MY <span>K-DRAMA</span><br>FAVORIT</h1>
+<p class="isub">✨ Personal Collection ✨</p>
+<button class="bs" onclick="startApp()">MULAI</button>
+</div>
+
+<div class="container" id="app">
+<div class="th">
+<div class="lt">🎬 My K-Drama <span>Favorit</span></div>
+<button class="tb" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+</div>
+<div class="mlc">
+<div class="mlt">📋 My Favorite K-Drama List</div>
+<div class="mld">Semua drama Korea favorit saya — lengkap dengan rating, sinopsis, dan catatan pribadi.</div>
+</div>
+<div class="sg">
+<div class="sc"><div class="sn" id="total-drama">10</div><div class="sl">Drama Korea</div></div>
+<div class="sc"><div class="sn">5</div><div class="sl">Genre Favorit</div></div>
+</div>
+<input type="text" class="sb" id="searchInput" placeholder="🔍 Cari judul drama favorit...">
+<div class="st">MY FAVORITE K DRAMA</div>
+<div class="dl" id="dramaList"></div>
+<div class="fc">
+<div class="ft">Created by <span>f4an</span> / <span>s4kha</span></div>
+<div class="sl2">
+<a href="https://www.instagram.com/f4an_08?stkn=dDk2dXdwZmJ4cjJq" target="_blank" class="si ig" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+<a href="https://www.tiktok.com/@f4an_08?_r=1&_t=ZS-99kJdbR8J77" target="_blank" class="si tt" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a>
+<a href="https://wa.me/6281225001370" target="_blank" class="si wa" title="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</div>
+</div>
+</div>
+
+<button class="btt" id="backToTop" onclick="scrollToTop()">↑</button>
+
+<div class="mo" id="detailModal">
+<div class="mc">
+<button class="mx" onclick="closeModal()">✕</button>
+<img id="modalPoster" class="mp" src="" alt="">
+<div class="mb">
+<h2 id="modalTitle" class="mt2">Judul</h2>
+<div class="mm">
+<span class="mg" id="modalYear">2024</span>
+<span class="mg" id="modalEpisodes">16 eps</span>
+<span class="stb" id="modalStatus">✅ Selesai</span>
+</div>
+<div id="modalGenres" class="gr" style="font-size:13px">Romance</div>
+<div class="mrr">
+<span class="ms" id="modalStars">★★★★★</span>
+<span class="mrt" id="modalRatingText">9.5/10</span>
+</div>
+<div class="msy" id="modalSynopsis">Sinopsis...</div>
+<div class="mn" id="modalNote">📝 <strong>Catatan:</strong> ...</div>
+</div>
+</div>
+</div>
+
+<script>
+const kdramas=[
+{id:1,title:"HEAD OVER HELLS",year:2024,ep:"16 eps",genres:["Romance","Fantasy","Drama"],rating:9.5,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/e/ea/Head_Over_Heels_poster.png?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original",synopsis:"Park Seong-ah (Cho Yi-hyun) adalah seorang siswi SMA berusia 18 tahun yang menjalani kehidupan ganda sebagai dukun muda dengan nama samaran . Dengan kemampuan spiritualnya, ia membantu klien-kliennya meramal masa depan dan mengatasi berbagai masalah. Suatu hari, ia bertemu dengan Bae Gyeon-woo (Choo Young-woo), seorang pemuda yang selalu dirundung nasib sial dan diramalkan akan meninggal dalam waktu dekat. Seong-ah jatuh cinta pada pandangan pertama dan bertekad untuk mengubah takdir tragis Gyeon-woo, meskipun harus melawan takdir itu sendiri.",note:"end nya kurang sih,jiho😭😭😭"},
+{id:2,title:"VOICE",year:2017,ep:"16 eps",genres:["thriller","Mystery","Crime"],rating:9.99,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/d/d9/Voice_poster.jpg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Moo Jin-hyuk (Jang Hyuk) adalah seorang detektif populer yang memecahkan kasus-kasus besar, tetapi setelah istrinya dibunuh oleh seorang pembunuh berantai, hidupnya berputar ke bawah. Dia diliputi rasa bersalah karena tidak bisa melindungi istrinya dan diam-diam mencari pembunuhnya.Sementara itu, Kang Kwon-joo (Lee Ha-na) lulus dari akademi kepolisian dengan nilai tertinggi. Dia mulai bekerja di pusat panggilan darurat 112. Saat bekerja di sana, kasus pembunuhan brutal terjadi dan ayahnya yang merupakan sersan polisi menuju ke TKP. Ayahnya terbunuh di sana dan Kwon-joo mendengar apa yang terjadi melalui telepon. Setelah itu, dia pergi ke AS untuk belajar dan kembali ke Korea sebagai profiler suara profesional.Detektif Jin-hyuk dan Kang Kwon-joo menyelesaikan kasus bersama untuk mengejar pembunuh berantai yang bertanggung jawab atas kematian anggota keluarga mereka.",note:"wajib nonton seru bsngett..,nunggu s 5 sampai lumutan ini mah😭😭"},
+{id:3,title:"TELL ME WHAT YOU SAW",year:2020,ep:"16 eps",genres:["Thriller","Mystery","psychological "],rating:9.6,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/6/69/Tell_Me_What_You_Saw_main_poster.jpg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Seorang profiler jenius yang eksentrik (Jang Hyuk) bekerja dengan seorang detektif dengan memori fotografi (Choi Soo-young) dan seorang kepala polisi (Jin Seo-yeon) untuk mengejar seorang pembunuh berantai yang dianggap sudah mati.",note:"pengelihatanya tajam banget jir"},
+{id:4,title:"HE IS PSYCHOMETRIC",year:2019,ep:"16 eps",genres:["Thriller","Comedy","Fantasy"],rating:8.7,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/a/a1/He_Is_Psychometric.jpg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Setelah kehilangan orang tuanya dalam insiden kebakaran apartemen, Lee Ahn (Park Jin-young) mendapatkan kelebihan psikometri, yaitu kemampuan membaca masa lalu orang atau benda melalui kontak fisik, lalu ia menggunakannya untuk menjatuhkan orang-orang jahat di sekitarnya. Ketika ia belum mengetahui bagaimana cara mengendalikan kelebihannya, ia bertemu dengan Yoon Jae-in (Shin Ye-eun) yang mencoba untuk menyembunyikan rahasia masa lalunya yang menyakitkan. Bersama dengan kakak asuhnya, jaksa Kang Sung-mo (Kim Kwon), serta rekannya, detektif Eun Ji-soo (Kim Da-som), mereka bekerja sama menyelesaikan kasus tersulit yang telah menghantui kehidupan Ahn, Sung-mo dan Jae-in.",note:"day 1 kenal mbg (gyj)"},
+{id:5,title:"THE PLAYER ",year:2018,ep:"14 eps",genres:["Thriller","Action","Crime"],rating:9.7,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/3/3c/Player_%28TV_Series%29.jpg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Kisah tentang empat individu berbakat di bidangnya masing-masing yang membentuk tim elit untuk menyelesaikan kejahatan dan bekerja sama dengan jaksa yang adil. Bersama-sama, mereka menyita uang gelap dan memastikan bahwa mereka yang menghasilkan uang melalui kejahatan akan ditangkap.",note:"aku mau ikut🗿🗿"},
+{id:6,title:"BLIND",year:2022,ep:"16 eps",genres:["thriller","Crime",""],rating:9.9,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/4/45/Blind_%282022%29.jpg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Blind menceritakan kisah korban, pelaku dan juga orang-orang yang mencoba mendeteksi pelaku, termasuk detektif, hakim, pekerja sosial dan juri. Sejak kecil, Ryu Sung-Joon (Ok Taec-yeon) bermimpi untuk menghukum orang jahat. Dia sekarang bekerja sebagai detektif untuk membantu korban dan menghukum pelaku.",note:"pembunuhnya tak terduga wok"},
+{id:7,title:"PARTNERS FOR JUSTICE",year:2018,ep:"16 eps",genres:["Medical","mystery","Crime"],rating:9.2,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/7/74/Partners_for_Justice_poster.jpg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Bercerita tentang seorang dokter forensik hebat bernama, Baek Boem dan jaksa wanita cantik bernama, Eun Sol. Mereka bekerja sama untuk menyelesaikan kasus-kasus sadis, dan memberikan keadilan bagi si korban.",note:"oi kapan s3"},
+{id:8,title:"BLACK OUT",year:2024,ep:"14 eps",genres:["Mystery","Crime","Thriller"],rating:9.3,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/4/44/Black_Out_%28TV_series%29.png?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original",synopsis:"Ketika Ko Jung-woo berusia 19 tahun, ia adalah seorang siswa SMA di Muchon Town dan hendak masuk ke sekolah kedokteran bergengsi. Tapi, Ko Jung-woo ditangkap karena membunuh dua teman sekelas perempuan. Ko Jung-woo tidak dapat mengingat apakah ia melakukan pembunuhan atau tidak dan mayat-mayat itu tidak pernah ditemukan. Setelah menjalani 10 tahun penjara, Ko Jung-woo kembali ke kampung halamannya. Ia memutuskan untuk meninggalkan daerah itu untuk selamanya dan memulai hidup baru, tetapi serangkaian hal aneh terjadi di sekelilingnya. Ia tidak dapat pergi karena ini. Entah bagaimana, Ko Jung-woo terlibat dengan Detektif No Sang-cheol dan mereka mencoba untuk mengungkap kebenaran tentang apa yang terjadi pada hari ketika kedua gadis itu dibunuh. No Sang-cheol adalah seorang detektif elit, yang lulus di puncak universitas kepolisian. Namun, pada pernikahannya, pengantinnya dibunuh secara brutal. Hidupnya benar-benar berubah setelah itu dan karirnya hancur. Ia kemudian diturunkan pangkatnya ke kantor polisi di Kota Muchon. Karena suatu insiden, ia mulai menyelidiki kembali kasus Ko Jung-woo.Sementara itu, Choi Na-kyeom adalah teman sekelas Ko Jung-woo di sekolah menengah. Ia telah lama menyukainya dan ia dengan setia mendukungnya saat ia berada di penjara. Sejak dibebaskan, ia bermimpi untuk hidup bahagia bersamanya.Ha Seol mengambil cuti dari sekolah kedokteran. Dia berkeliling negeri dengan skuter dan kebetulan berhenti di Muchon Town. Dia akhirnya tinggal di sana, sambil bekerja paruh waktu di sebuah restoran.",note:"No comment"},
+{id:9,title:"FLEX X COP",year:2024,ep:"16 eps",genres:["Comedy","Crime","action"],rating:9.5,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/5/5d/Flex_X_Cop_%28poster%29.jpeg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Seri ini mengisahkan cerita Jin I-soo (Ahn Bo-hyun), seorang chaebol generasi ketiga yang belum dewasa yang menjadi detektif, dan Lee Gang-hyun Park Ji-hyun, seorang detektif veteran di departemen kejahatan kekerasan. Gang-hyun awalnya ragu-ragu terhadap I-soo, menganggapnya sebagai pengganggu dalam hidupnya. Namun, momen penting dalam hubungan mereka akhirnya membuat mereka menjadi rekan kerja.",note:"orang have jadi polisi"},
+{id:10,title:"TAXI DRIVER",year:2021,ep:"16 eps",genres:["Drama","Crime","Psychological"],rating:9.1,status:"Selesai",poster:"https://upload.wikimedia.org/wikipedia/id/2/25/Taxi_Driver_main_poster.jpg?utm_source=id.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",synopsis:"Kim Do-ki (Lee Je-hoon) adalah lulusan Akademi Militer Korea (KMA) yang ibunya dibunuh ketika dia masih muda. Dia sekarang bekerja sebagai sopir taksi untuk sebuah perusahaan yang menawarkan layanan panggilan balas dendam (revenge-call) kepada kliennya.",note:"inpokan s4"}
+];
+  function getStars(r){const f=Math.floor(r/2);let s='';for(let i=0;i<5;i++)s+=(i<f)?'★':'☆';return s}
+
+function renderDramas(data){
+const c=document.getElementById('dramaList');c.innerHTML='';
+if(data.length===0){c.innerHTML='<p style="text-align:center;color:var(--txt2);padding:20px;grid-column:1/-1">Drama tidak ditemukan.</p>';return}
+data.forEach((d,i)=>{
+const card=document.createElement('div');card.className='dc';card.style.animationDelay=(i*0.08)+'s';
+const g=d.genres.slice(0,2).join(' • ');
+card.innerHTML=`<img src="${d.poster}" alt="${d.title}" class="dp" onerror="this.src='https://via.placeholder.com/300x400/161b22/00b4d8?text='+encodeURIComponent('${d.title}')">
+<div class="ci">
+<div class="dt">${d.title}</div>
+<div class="dy">${d.year} • ${d.ep}</div>
+<div class="gr">${g}</div>
+<div><span class="rs">${getStars(d.rating)}</span><span class="rt">${d.rating}</span></div>
+<div class="stb">✅ ${d.status}</div>
+<button class="bd2" onclick="openModal(${d.id})">Detail</button>
+</div>`;c.appendChild(card)})}
+
+function openModal(id){
+const d=kdramas.find(x=>x.id===id);if(!d)return;
+document.getElementById('modalPoster').src=d.poster;
+document.getElementById('modalTitle').textContent=d.title;
+document.getElementById('modalYear').textContent=d.year;
+document.getElementById('modalEpisodes').textContent=d.ep;
+document.getElementById('modalStatus').textContent='✅ '+d.status;
+document.getElementById('modalGenres').textContent=d.genres.join(' • ');
+document.getElementById('modalStars').textContent=getStars(d.rating);
+document.getElementById('modalRatingText').textContent=d.rating+'/10';
+document.getElementById('modalSynopsis').textContent=d.synopsis;
+document.getElementById('modalNote').innerHTML='📝 <strong>Catatan:</strong> '+d.note;
+const m=document.getElementById('detailModal');m.style.display='flex';
+setTimeout(()=>m.classList.add('sm'),10);
+document.body.style.overflow='hidden'}
+
+function closeModal(){
+const m=document.getElementById('detailModal');m.classList.remove('sm');
+setTimeout(()=>{m.style.display='none';document.body.style.overflow='auto'},300)}
+
+document.getElementById('detailModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
+function toggleTheme(){
+const b=document.body,btn=document.getElementById('themeToggle');
+b.classList.toggle('lm');
+if(b.classList.contains('lm')){btn.innerHTML='☀️ Light';localStorage.setItem('theme','light')}
+else{btn.innerHTML='🌙 Dark';localStorage.setItem('theme','dark')}}
+
+function startApp(){
+const i=document.getElementById('intro'),a=document.getElementById('app');
+i.classList.add('fo');
+setTimeout(()=>{i.classList.add('hd');a.style.display='flex';setTimeout(()=>a.classList.add('sa'),50)},800)}
+
+function filterData(){
+const s=document.getElementById('searchInput').value.toLowerCase();
+renderDramas(kdramas.filter(d=>d.title.toLowerCase().includes(s)))}
+
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
+
+window.addEventListener('scroll',()=>{
+const b=document.getElementById('backToTop');
+if(window.scrollY>300)b.classList.add('sh');else b.classList.remove('sh')});
+
+document.addEventListener('DOMContentLoaded',()=>{
+renderDramas(kdramas);
+const t=localStorage.getItem('theme');
+if(t==='light'){document.body.classList.add('lm');document.getElementById('themeToggle').innerHTML='☀️ Light'}
+document.getElementById('searchInput').addEventListener('input',filterData)});
+</script>
+</body>
+</html>
